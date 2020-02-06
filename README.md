@@ -1,6 +1,6 @@
 # http4s Executable via GraalVM Native Image
 
-This repository demonstrates how to compile an http4s application to a native executable using GraalVM's Native Image. The accompanying blog post (link pending) has all the details. 
+This repository demonstrates how to compile an http4s application to a native executable using GraalVM's Native Image. The accompanying [blog post](https://www.inner-product.com/posts/serverless-scala-services-with-graalvm/) has all the details. 
 
 To quickly get going:
 
