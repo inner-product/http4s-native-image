@@ -4,6 +4,14 @@ This repository demonstrates how to compile an http4s application to a native ex
 
 To quickly get going:
 
+1. Having installed GraalVM Native Image run the `nativeImageLocal` task to generate an executable.
+
+2. Optionally, run `startup-benchmark.sh` and `sustained-benchmark.sh` to
+   benchmark against the JVM, and `analysis.py` to generate graphs.
+
+
+To build a Linux executable:
+
 1. Build the Docker image in the `docker` directory
 
 ``` sh
@@ -11,18 +19,7 @@ cd docker
 docker build -t inner-product/graalvm-native-image .
 ```
 
-2. Run the `nativeImage` task from sbt.
-
-The result will be a Linux executable. 
-
-
-## Building Without Docker
-
-If you want to build an executable on your machine without using Docker you should:
-
-1. Install GraalVM and Native Image
-2. Build the fat JAR using the `assembly` task in sbt
-3. Run `native-image -jar tar/scala-2.13/http4s-native-image-assembly-0.1.0-SNAPSHOT.jar `
+2. Run the `nativeImage` task from sbt. The result will be a Linux executable. 
 
 
 ## License
