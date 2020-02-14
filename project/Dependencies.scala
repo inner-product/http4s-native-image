@@ -7,7 +7,7 @@ object Dependencies {
   val catsEffectVersion = "2.0.0"
   val circeVersion      = "0.12.3"
 
-  val http4sVersion     = "0.21.0-RC2"
+  val http4sVersion     = "0.21.0"
 
   val logbackVersion    = "1.2.3"
   val janinoVersion     = "3.1.0"
