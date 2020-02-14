@@ -37,8 +37,35 @@ libraryDependencies ++= Seq(
 
 testFrameworks += new TestFramework("minitest.runner.Framework")
 
+lazy val nativeImageLocal =
+  taskKey[File]("Build a standalone executable on this machine using GraalVM Native Image")
+
+nativeImageLocal := {
+  import sbt.Keys.streams
+  val assemblyFatJar = assembly.value
+  val assemblyFatJarPath = assemblyFatJar.getAbsolutePath()
+  val outputName = "ping-server.local"
+  val outputPath = (baseDirectory.value / "out" / outputName).getAbsolutePath()
+
+  val cmd = s"""native-image
+     | -jar ${assemblyFatJarPath}
+     | ${outputPath}""".stripMargin.filter(_ != '\n')
+
+  val log = streams.value.log
+  log.info(s"Building local native image from ${assemblyFatJarPath}")
+  log.debug(cmd)
+  val result = (cmd.!(log))
+
+  if (result == 0) file(s"${outputPath}")
+  else {
+    log.error(s"Local native image command failed:\n ${cmd}")
+    throw new Exception("Local native image command failed")
+  }
+}
+
+
 lazy val nativeImage =
-  taskKey[File]("Build a standalone executable using GraalVM Native Image")
+  taskKey[File]("Build a standalone Linux executable using GraalVM Native Image")
 
 nativeImage := {
   import sbt.Keys.streams
