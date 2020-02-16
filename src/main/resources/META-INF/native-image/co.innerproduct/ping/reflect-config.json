@@ -162,5 +162,19 @@
     {
         "name": "ch.qos.logback.classic.pattern.LineSeparatorConverter",
         "allDeclaredConstructors": true
+    },
+    {
+        "name": "ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+        "allPublicMethods":true,
+        "allDeclaredConstructors": true
+    },
+    {
+        "name": "ch.qos.logback.core.ConsoleAppender",
+        "allPublicMethods":true,
+        "allDeclaredConstructors": true
+    },
+    {
+        "name": "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+        "allDeclaredConstructors": true
     }
 ]
